@@ -1,0 +1,56 @@
+{{>header}}
+<p></p><p></p>
+
+<form action="saveApplication" method="post" enctype="multipart/form-data">
+
+  <input name="id" type="hidden" value="{{id}}"/>
+
+  <div class="form-group">
+    <label for="appID">IOS application ID (bundle ID):</label>
+    <input name="appID" class="form-control" type="text" value="{{appID}}"/>
+  </div>
+
+  <div class="form-group">
+    <label for="appID">Authorization:</label><Br>
+    <input type="radio" name="authorization" value="pem" {{#pemBool}}checked{{/pemBool}}> pem-style
+    <input type="radio" name="authorization" value="p8" {{#p8Bool}}checked{{/p8Bool}}> p8-style
+  </div>
+
+  <table border="2">
+
+    <tr>
+      <th>for pem-style</th>
+      <th>for p8-style</th>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="pemFile">*.pem file:</label>
+        <input name="pemFile" type="file"/>
+      </td>
+      <td>
+        <p><label for="pemFile">Team ID:</label>
+        <input name="teamID"  type="text" value="{{teamID}}"/></p>
+        <p><label for="pemFile">Key id:</label>
+        <input name="keyID" type="text" value="{{keyID}}"/></p>
+        <p><label for="p8File">*.p8 file:</label>
+        <input name="p8File" type="file"/>
+      </td>
+    </tr>
+
+  </table>
+
+  <div class="form-group">
+    <label for="androidApiKey">Android API access key:</label>
+    <input name="androidApiKey" class="form-control" type="text" value="{{androidApiKey}}"/>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Save">
+
+</form>
+
+<form action="index" method="get">
+  <input type="submit" class="btn btn-primary" value="Cancel">
+</form>
+
+{{>footer}}

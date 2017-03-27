@@ -1,0 +1,65 @@
+
+{{>header}}
+
+<h3>Applications</h3>
+
+{{# apps }}
+  <p></p>
+  <table border="2" cellpadding="15">
+      <tr>
+        <td>ID (app_id for external access): </td><td>{{ id }}</td>
+      </tr>
+      <tr>
+        <td>Auth key (for external access): </td><td>{{ authKey }}</td>
+      </tr>
+      <tr>
+        <td>Application ID: </td><td> {{ appID }} </td>
+      </tr>
+      <tr>
+        <td>Authorization style: </td><td> {{ authStyle }} </td>
+      </tr>
+      <tr>
+        <td>*.pem file: </td><td> {{ pemPath }} </td>
+      </tr>
+      <tr>
+        <td>*.p8 file: </td><td> {{ p8Path }} </td>
+      </tr>
+      <tr>
+        <td>Key ID:</td><td> {{ keyID }} </td>
+      </tr>
+      <tr>
+        <td>Team ID:</td><td> {{ teamID }} </td>
+      </tr>
+      <tr>
+        <td>Android API access key:</td>  <td> {{ androidApiKey }} </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <p></p>
+          <form action="generateNotification" method="post" style='float:left;margin-left: 20px;'>
+            <input name="id" type="hidden" value="{{id}}"/>
+            <input type="submit" value="Test push notification" class="btn btn-primary">
+          </form>
+
+          <form action="editApplication" method="post" style='float:left;margin-left: 20px;'>
+            <input name="id" type="hidden" value="{{id}}"/>
+            <input type="submit" value="Edit" class="btn btn-primary">
+          </form>
+
+          <form action="deleteApplication" method="post" style='float:left;margin-left: 20px;'>
+            <input name="id" type="hidden" value="{{id}}"/>
+            <input type="submit" value="Delete" class="btn btn-primary">
+          </form>
+        </td>
+      </tr>
+  </table>
+  <p></p>
+{{/ apps }}
+
+<p></p>
+<form action="newApplication" method="post">
+  <p><input type="submit" value="New Application" class="btn btn-primary"></p>
+</form>
+
+{{>footer}}

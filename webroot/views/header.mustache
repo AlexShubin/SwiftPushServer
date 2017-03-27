@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          {{^authenticated}}
+          <li role="presentation"><a href="/login">Log In</a></li>
+          {{/authenticated}}
+          {{#authenticated}}
+          <li role="presentation"><a href="javascript:;" onclick="var f=document.createElement('form');f.method='POST';f.action='/logout';f.submit();">Logout</a></li>
+          {{/authenticated}}
+        </ul>
+      </nav>
+      <h3 class="text-muted"><a href="/">Swift push server dashboard</a></h3>
+    </div>
+    {{#flash}}
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      {{flash}}
+    </div>
+    {{/flash}}
