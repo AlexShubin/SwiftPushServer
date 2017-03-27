@@ -1,4 +1,4 @@
-INSTALLATION
+INSTALLATION and RUNNING
 
 in project directory:
 
@@ -12,4 +12,6 @@ Instead of all that you can generate XCode project on Mac by running
 
 $ swift package generate-xcodeproj
 
-And the run it from XCode
+And then run it from XCode
+
+To open web interface print "localhost:8090" in your browser
