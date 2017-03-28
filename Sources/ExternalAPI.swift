@@ -31,21 +31,22 @@ class ExternalAPI {
                 
         }
         
-        guard let app = Database.shared.getApplicationBy(id: id) else {
-                
-                response.appendBody(string: "Wrong ID passed")
-                response.completed()
-                return
-                
+        guard deviceIds.count + registrationIDs.count > 0 else {
+            response.appendBody(string: "No tokens to send passed")
+            response.completed()
+            return
         }
         
-        guard let key = request.header(.authorization),
-            key == app.authKey else {
-                
-                response.appendBody(string: "Wrong key passed")
-                response.completed()
-                return
-                
+        guard let app = Database.shared.getApplicationBy(id: id) else {
+            response.appendBody(string: "Wrong ID passed")
+            response.completed()
+            return
+        }
+        
+        guard let key = request.header(.authorization), key == app.authKey else {
+            response.appendBody(string: "Wrong auth key passed in header")
+            response.completed()
+            return
         }
         
         var ApiResponse = [String:Any]()
@@ -61,70 +62,51 @@ class ExternalAPI {
         //Pushing to APNS
         /////////////////
         
-        let n = NotificationPusher(apnsTopic: app.appID ?? "", expiration: .immediate, priority: .immediate)
-        
-        var items:[APNSNotificationItem] = [.alertBody(text), .sound("default"), .alertTitle(title)]
-        
-        if let imageURL = inputJSON?["imageURL"] as? String {
-            items.append(.alertLaunchImage(imageURL))
-        }
-        if let badge = inputJSON?["badge"] as? Int {
-            items.append(.badge(badge))
-        }
-        
-       n.pushAPNS(
-            configurationName: app.appID ?? "",
-            deviceTokens: deviceIds,
-            notificationItems: items)
-        {
-            responses in
+        if deviceIds.count > 0 {
+            let n = NotificationPusher(apnsTopic: app.appID ?? "", expiration: .immediate, priority: .immediate)
             
-            ApiResponse["ios_response"] = NotificationResponse.responsesToJson(responses: responses, deviceIDs: deviceIds)
+            let items:[APNSNotificationItem] = [
+                .alertBody(text),
+                .sound("default"),
+                .alertTitle(title)
+            ]
             
+            n.pushAPNS(
+                configurationName: app.appID ?? "",
+                deviceTokens: deviceIds,
+                notificationItems: items)
+            {
+                responses in
+                
+                ApiResponse["ios_response"] = NotificationResponse.responsesToJson(responses: responses, deviceIDs: deviceIds)
+                dispatchGroup.leave()
+            }
+        } else {
             dispatchGroup.leave()
-            
         }
         
         /////////////////
         //Pushing to GCM
         /////////////////
         
-        var msg: [String:Any] = [
-            "message" 	: text,
-            "title"		: title
-            //    "subtitle"	: "This is a subtitle. subtitle",
-            //    "tickerText": "Ticker text here...Ticker text here...Ticker text here",
-            //    "vibrate"	: 1,
-            //    "sound"		: 1,
-            //    "smallIcon"	: "small_icon"
-        ]
-        
-        if let imageURL = inputJSON?["imageURL"] as? String {
-            msg["largeIcon"] = imageURL
-        }
-        if let badge = inputJSON?["badge"] as? Int {
-            msg["badge"] = badge
-        }
-        
-        AndroidPushSender.send(androidApiKey: app.androidApiKey ?? "",
-                               message: msg,
-                               to: registrationIDs) {
-            androidResponse in
+        if registrationIDs.count > 0 {
             
-            ApiResponse["android_response"] = androidResponse
+            let msg: [String:Any] = [
+                "message" 	: text,
+                "title"		: title
+            ]
             
+            AndroidPushSender.send(androidApiKey: app.androidApiKey ?? "",
+                                   message: msg,
+                                   to: registrationIDs) {
+                                    androidResponse in
+                                    
+                                    ApiResponse["android_response"] = androidResponse
+                                    dispatchGroup.leave()
+            }
+        } else {
             dispatchGroup.leave()
-                                
         }
     }
     
 }
-
-
-
-
-
-
-
-
-
