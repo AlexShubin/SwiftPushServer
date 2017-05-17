@@ -9,13 +9,19 @@
 import SQLite
 import PerfectLib
 
+extension SQLiteStmt {
+    func columnBool(position: Int) -> Bool {
+        return columnInt(position: position) == 0 ? false : true
+    }
+}
+
 class Database {
     
     static let shared = Database()
     
-    static let dbPath = "./database"
+    static let dbPath = "./db/database"
     
-    private var db: SQLite
+    var db: SQLite
     
     //MARK: - INIT
 
@@ -27,6 +33,7 @@ class Database {
         } catch {
             fatalError("\(error)")
         }
+        
     }
     
     deinit {
@@ -35,7 +42,7 @@ class Database {
     
     private func buildTables() throws {
         
-        try db.execute(statement: "CREATE TABLE IF NOT EXISTS applications (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, auth_key TEXT NOT NULL, app_id TEXT,  auth_style TEXT, pem_path TEXT, key_id TEXT, team_id TEXT, p8_path TEXT, android_api_key TEXT)")
+        try db.execute(statement: "CREATE TABLE IF NOT EXISTS applications (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, auth_key TEXT NOT NULL, app_id TEXT, auth_style TEXT, pem_path TEXT, key_id TEXT, team_id TEXT, p8_path TEXT, android_api_key TEXT, mobile_app_auth_key TEXT NOT NULL, production INTEGER NOT NULL)")
         
     }
     
@@ -45,7 +52,7 @@ class Database {
         
         var result = [Application]()
         
-        let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key FROM applications"
+        let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key, mobile_app_auth_key, production FROM applications"
         
         do {
             
@@ -61,6 +68,8 @@ class Database {
                 app.teamID = statement.columnText(position: 6)
                 app.p8Path = statement.columnText(position: 7)
                 app.androidApiKey = statement.columnText(position: 8)
+                app.mobileAppAuthKey = statement.columnText(position: 9)
+                app.production = (statement.columnInt(position: 10) != 0)
                 
                 result.append(app)
             }} catch {
@@ -72,7 +81,7 @@ class Database {
     
     func getApplicationBy(id: String) -> Application? {
         
-        let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key FROM applications WHERE id = '\(id)' LIMIT 1"
+        let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key, mobile_app_auth_key, production FROM applications WHERE id = '\(id)' LIMIT 1"
         
         var app: Application?
         
@@ -90,6 +99,8 @@ class Database {
                 app!.teamID = statement.columnText(position: 6)
                 app!.p8Path = statement.columnText(position: 7)
                 app!.androidApiKey = statement.columnText(position: 8)
+                app!.mobileAppAuthKey = statement.columnText(position: 9)
+                app!.production = (statement.columnInt(position: 10) != 0)
                 
                 }
             
@@ -106,7 +117,7 @@ class Database {
             
             var query = "INSERT OR REPLACE INTO applications VALUES ("
             
-            query.append("'\(application.id)',")
+            query.append("\(application.id),")
             query.append("'\(application.authKey)',")
             query.append("'\(application.appID ?? "null")',")
             query.append("'\(application.authStyle?.rawValue ?? "null")',")
@@ -114,7 +125,9 @@ class Database {
             query.append("'\(application.keyID ?? "null")',")
             query.append("'\(application.teamID ?? "null")',")
             query.append("'\(application.p8Path ?? "null")',")
-            query.append("'\(application.androidApiKey ?? "null")'")
+            query.append("'\(application.androidApiKey ?? "null")',")
+            query.append("'\(application.mobileAppAuthKey)',")
+            query.append("\(application.production ? 1 : 0)")
             
             query.append(")")
             

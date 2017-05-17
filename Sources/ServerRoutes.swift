@@ -6,6 +6,7 @@
 //
 //
 
+import Foundation
 import PerfectHTTP
 import PerfectNotifications
 import PerfectLib
@@ -42,15 +43,15 @@ public class ServerRoutes {
         
         // internal post //
         routes.add(method:.post, uri:"/send", handler:sendHandler)
-        routes.add(method:.post, uri:"/generateNotification", handler:generateNotificationHandler)
-        routes.add(method:.post, uri:"/newApplication", handler:newApplicationHandler)
-        routes.add(method:.post, uri:"/editApplication", handler:editApplicationHandler)
-        routes.add(method:.post, uri:"/saveApplication", handler:saveApplicationHandler)
-        routes.add(method:.post, uri:"/deleteApplication", handler:deleteApplicationHandler)
+        routes.add(method:.post, uri:"/generate_notification", handler:generateNotificationHandler)
+        routes.add(method:.post, uri:"/new_application", handler:newApplicationHandler)
+        routes.add(method:.post, uri:"/edit_application", handler:editApplicationHandler)
+        routes.add(method:.post, uri:"/save_application", handler:saveApplicationHandler)
+        routes.add(method:.post, uri:"/delete_application", handler:deleteApplicationHandler)
         //
         
         // For external API
-        routes.add(method:.post, uri:"/sendNotification", handler:ExternalAPI.sendNotificationHandler)
+        routes.add(method:.post, uri:"/send_notification", handler:ExternalAPI.sendNotificationHandler)
         //
         
         return routes
@@ -91,7 +92,7 @@ public class ServerRoutes {
         
         let context = getContext(request)
         
-        response.render(template: "/editApplication", context: context)
+        response.render(template: "/edit_application", context: context)
         
     }
     
@@ -101,16 +102,11 @@ public class ServerRoutes {
             let app = Database.shared.getApplicationBy(id: id) {
         
             var context = getContext(request)
-            
-            context["id"] = id
-            context["appID"] = app.appID
+            context += app.mustacheRepresentation()
             context["pemBool"] = (app.authStyle == .pem)
             context["p8Bool"] = (app.authStyle == .p8)
-            context["teamID"] = app.teamID
-            context["keyID"] = app.keyID
-            context["androidApiKey"] = app.androidApiKey
-            
-            response.render(template: "/editApplication", context: context)
+   
+            response.render(template: "/edit_application", context: context)
             
         }
     }
@@ -137,6 +133,8 @@ public class ServerRoutes {
             } catch {
                 fatalError("\(error)")
             }
+            
+            app.production = false
             
             for upload in uploads {
                 
@@ -177,6 +175,8 @@ public class ServerRoutes {
                     app.authStyle = Application.AuthStyle(rawValue: upload.fieldValue)
                 case "androidApiKey":
                     app.androidApiKey = upload.fieldValue
+                case "production":
+                    app.production = true
                 default:
                     break
                 }
@@ -192,7 +192,7 @@ public class ServerRoutes {
         
     }
     
-    open static func generateNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    static func generateNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         if let id = request.param(name: "id") {
             
@@ -200,12 +200,12 @@ public class ServerRoutes {
             
             context["id"] = id
             
-            response.render(template: "/generateNotification", context: context)
+            response.render(template: "/generate_notification", context: context)
         }
         
     }
     
-    open static func deleteApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    static func deleteApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         if let id = request.param(name: "id") {
             
@@ -215,9 +215,7 @@ public class ServerRoutes {
         }
     }
     
-    
-    
-    open static func sendHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    static func sendHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         guard let text = request.param(name: "text"),
             let id = request.param(name: "id"),
@@ -236,30 +234,30 @@ public class ServerRoutes {
         
         let json:[String:Any] = [
             "app_id": id,
-            "ios_tokens": tokens.components(separatedBy: ","),
-            "android_reg_ids": registrationIDs.components(separatedBy: ","),
+            "ios_tokens": tokens.components(separatedBy: ",").filter {!$0.isEmpty},
+            "android_reg_ids": registrationIDs.components(separatedBy: ",").filter {!$0.isEmpty},
             "title": title,
             "message": text
         ]
         
         let header = "Authorization: "+app.authKey+"\nContent-Type: application/json"
-        
-        let selfResponse = CurlHTTPRequest.jsonPOST(url: "localhost:\(server.serverPort)/sendNotification",
-            header: header, json: json)
+        let body = try! json.jsonEncodedString()
         
         print("==================================")
         print("test POST request to external API:")
         print("==================================")
         print(header)
-        print(try! json.jsonEncodedString())
+        print(body)
         print("==================================")
         
-        var context = getContext(request)
-        
-        context["response"] = selfResponse
-        
-        response.render(template: "/response", context: context)
-        
+        CurlHTTPRequest.post(url: "localhost:\(server.serverPort)/send_notification",
+        header: header, body: body) { selfResponse in
+
+            var context = getContext(request)
+            context["response"] = selfResponse
+    
+            response.render(template: "/response", context: context)
+        }
     }
     
 }

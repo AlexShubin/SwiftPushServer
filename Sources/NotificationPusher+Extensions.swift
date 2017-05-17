@@ -35,7 +35,7 @@ extension NotificationPusher {
                 
                 addConfigurationAPNS(
                     name: appID,
-                    production: false,
+                    production: app.production,
                     certificatePath: pemPath)
                 
             }
@@ -49,7 +49,7 @@ extension NotificationPusher {
                 
                 addConfigurationAPNS(
                     name: appID,
-                    production: false,
+                    production: app.production,
                     keyId: keyID,
                     teamId: teamID,
                     privateKeyPath: p8Path)

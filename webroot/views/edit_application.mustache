@@ -1,13 +1,18 @@
 {{>header}}
 <p></p><p></p>
 
-<form action="saveApplication" method="post" enctype="multipart/form-data">
+<form action="save_application" method="post" enctype="multipart/form-data">
 
   <input name="id" type="hidden" value="{{id}}"/>
 
   <div class="form-group">
     <label for="appID">IOS application ID (bundle ID):</label>
     <input name="appID" class="form-control" type="text" value="{{appID}}"/>
+  </div>
+
+  <div class="form-group">
+    <label for="appID">Production:</label>
+    <input type="checkbox" name="production" value="yes" {{#production}}checked{{/production}}>
   </div>
 
   <div class="form-group">

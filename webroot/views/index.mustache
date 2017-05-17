@@ -13,10 +13,16 @@
         <td>Auth key (for external access): </td><td>{{ authKey }}</td>
       </tr>
       <tr>
+        <td>Mobile app  auth key (for external access): </td><td>{{ mobileAppAuthKey }}</td>
+      </tr>
+      <tr>
         <td>Application ID: </td><td> {{ appID }} </td>
       </tr>
       <tr>
         <td>Authorization style: </td><td> {{ authStyle }} </td>
+      </tr>
+      <tr>
+        <td>Production: </td><td> {{ production }} </td>
       </tr>
       <tr>
         <td>*.pem file: </td><td> {{ pemPath }} </td>
@@ -37,17 +43,22 @@
         <td></td>
         <td>
           <p></p>
-          <form action="generateNotification" method="post" style='float:left;margin-left: 20px;'>
+          <form action="generate_notification" method="post" style='float:left;margin-left: 20px;'>
             <input name="id" type="hidden" value="{{id}}"/>
             <input type="submit" value="Test push notification" class="btn btn-primary">
           </form>
 
-          <form action="editApplication" method="post" style='float:left;margin-left: 20px;'>
+          <form action="get_statuses" method="post" style='float:left;margin-left: 20px;'>
+            <input name="id" type="hidden" value="{{id}}"/>
+            <input type="submit" value="Get notification status" class="btn btn-primary">
+          </form>
+
+          <form action="edit_application" method="post" style='float:left;margin-left: 20px;'>
             <input name="id" type="hidden" value="{{id}}"/>
             <input type="submit" value="Edit" class="btn btn-primary">
           </form>
 
-          <form action="deleteApplication" method="post" style='float:left;margin-left: 20px;'>
+          <form action="delete_application" method="post" style='float:left;margin-left: 20px;'>
             <input name="id" type="hidden" value="{{id}}"/>
             <input type="submit" value="Delete" class="btn btn-primary">
           </form>
@@ -58,7 +69,7 @@
 {{/ apps }}
 
 <p></p>
-<form action="newApplication" method="post">
+<form action="new_application" method="post">
   <p><input type="submit" value="New Application" class="btn btn-primary"></p>
 </form>
 

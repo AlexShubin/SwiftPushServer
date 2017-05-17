@@ -11,9 +11,9 @@ import PerfectCURL
 
 public class CurlHTTPRequest {
     
-    public static func jsonPOST(url: String, header: String, json: [String:Any]) -> String {
+    public static func post(url: String, header: String, body: String, callback: @escaping (String)->Void) {
         
-        let byteArray:[UInt8] = try! Array(json.jsonEncodedString().utf8)
+        let byteArray:[UInt8] = Array(body.utf8)
         
         let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: byteArray.count)
         pointer.initialize(from: byteArray, count: byteArray.count)
@@ -25,10 +25,11 @@ public class CurlHTTPRequest {
         curlObject.setOption(CURLOPT_POSTFIELDS, v: pointer)
         curlObject.setOption(CURLOPT_POSTFIELDSIZE, int: byteArray.count)
         
-        let perf = curlObject.performFully()
+        curlObject.perform { (code, header, body) in
         
-        curlObject.close()
+            curlObject.close()
         
-        return String(bytes: perf.2, encoding: .utf8) ?? ""
+            callback(String(bytes: body, encoding: .utf8) ?? "")
+        }
     }
 }

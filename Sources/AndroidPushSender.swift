@@ -12,14 +12,20 @@ import Foundation
 
 class AndroidPushSender {
     
-    public static func send(androidApiKey: String, message: [String:Any], to registrationIDs: [String], callback: @escaping ([String:Any])->Void) {
+    public static func send(androidApiKey:String, message:[String:Any], to registrationIDs:[String], timeToLive:Int, callback: @escaping ([String:Any])->Void) {
         
         let fields: [String:Any] = [
             "registration_ids" : registrationIDs,
+            "time_to_live": timeToLive,
             "data" : message
             ]
         
-        let byteArray:[UInt8] = try! Array(fields.jsonEncodedString().utf8)
+        let jsonToSend = try! fields.jsonEncodedString().utf8
+        
+        print("Performing request to GCM with json:")
+        print(jsonToSend)
+        
+        let byteArray:[UInt8] = Array(jsonToSend)
         
         let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: byteArray.count)
         pointer.initialize(from: byteArray, count: byteArray.count)
@@ -35,7 +41,7 @@ class AndroidPushSender {
             
             curlObject.close()
             
-            var result: [String:Any] = ["code": code]
+            var result: [String:Any] = ["code": code, "header": String(bytes: header, encoding: .utf8) ?? ""]
             
             if let respStr = String(bytes: body, encoding: .utf8),
                 var respJson = try? respStr.jsonDecode() as? [String:Any] {

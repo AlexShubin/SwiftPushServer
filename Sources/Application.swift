@@ -12,6 +12,8 @@ class Application {
     
     var id: Int
     var authKey: String
+    var mobileAppAuthKey: String
+    var production: Bool
     var appID: String?
     var pemPath: String?
     var authStyle: AuthStyle?
@@ -28,6 +30,8 @@ class Application {
     init() {
         self.id = Database.shared.getMaxAppID() + 1
         self.authKey = UUID().uuidString
+        self.mobileAppAuthKey = UUID().uuidString
+        self.production = false
     }
     
     func mustacheRepresentation() -> [String: Any] {
@@ -35,13 +39,15 @@ class Application {
         return [
             "id":id,
             "authKey":authKey,
+            "mobileAppAuthKey":mobileAppAuthKey,
             "appID":appID ?? "",
             "pemPath":pemPath ?? "",
             "keyID":keyID ?? "",
             "teamID":teamID ?? "",
             "authStyle":authStyle?.rawValue ?? "",
             "p8Path":p8Path ?? "",
-            "androidApiKey":androidApiKey ?? ""
+            "androidApiKey":androidApiKey ?? "",
+            "production": production
         ]
         
     }

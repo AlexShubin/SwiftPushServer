@@ -9,7 +9,13 @@ import PerfectTurnstileSQLite
 import TurnstilePerfect
 import PerfectNotifications
 
+//////////Constants//////////
+
 let allowRegistration = true
+
+/////////////////////////////
+
+Log.info(message: "SWIFT PUSH SERVER")
 
 // Used later in script for the Realm and how the user authenticates.
 let pturnstile = TurnstilePerfectRealm()
@@ -38,7 +44,7 @@ authenticationConfig.exclude("/register")
 authenticationConfig.exclude("/")
 authenticationConfig.exclude("/styles/style.css")
 
-authenticationConfig.exclude("/sendNotification")
+authenticationConfig.exclude("/send_notification")
 
 let authFilter = AuthFilter(authenticationConfig)
 
@@ -58,3 +64,4 @@ do {
 } catch PerfectError.networkError(let err, let msg) {
     print("Network error thrown: \(err) \(msg)")
 }
+

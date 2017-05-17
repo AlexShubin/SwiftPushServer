@@ -1,4 +1,6 @@
-INSTALLATION and RUNNING
+RECOMMENDED INSTALLATION
+
+-- Just to run on linux or mac
 
 in project directory:
 
@@ -8,10 +10,10 @@ Then you can run it by
 
 $ .build/debug/SwiftPushServer
 
-Instead of all that you can generate XCode project on Mac by running
+-- On OSx to Open in XCode
+
+Generate XCode project:
 
 $ swift package generate-xcodeproj
 
-And then run it from XCode
-
-To open web interface print "localhost:8090" in your browser
+And the run it from XCode

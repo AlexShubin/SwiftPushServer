@@ -20,18 +20,25 @@ class ExternalAPI {
         guard params.count > 0,
             let inputJSON = try? params[0].0.jsonDecode() as? [String:Any],
             let id = inputJSON?["app_id"] as? String,
-            let deviceIds = inputJSON?["ios_tokens"] as? [String],
-            let registrationIDs = inputJSON?["android_reg_ids"] as? [String],
             let text = inputJSON?["message"] as? String,
             let title = inputJSON?["title"] as? String else {
                 
-                response.appendBody(string: "Invalid data passed")
+                response.appendBody(string: "Invalid data passed: app_id, message, title - should be there")
                 response.completed()
                 return
-                
         }
         
-        guard deviceIds.count + registrationIDs.count > 0 else {
+        var iosTokens = [String]()
+        var androidRegIDs = [String]()
+        
+        if let tokens = inputJSON?["ios_tokens"] as? [String] {
+            iosTokens = tokens
+        }
+        if let regIDs = inputJSON?["android_reg_ids"] as? [String] {
+            androidRegIDs = regIDs
+        }
+        
+        guard iosTokens.count + androidRegIDs.count > 0 else {
             response.appendBody(string: "No tokens to send passed")
             response.completed()
             return
@@ -49,6 +56,12 @@ class ExternalAPI {
             return
         }
         
+        var secondsToLive = 60*60*24*7*4 // 4 weeks by default
+        if let timeToLive = inputJSON?["time_to_live"] as? Int,
+            1..<secondsToLive ~= timeToLive {
+            secondsToLive = timeToLive
+        }
+        
         var ApiResponse = [String:Any]()
         
         let dispatchGroup = DispatchGroupImitation() {
@@ -62,23 +75,27 @@ class ExternalAPI {
         //Pushing to APNS
         /////////////////
         
-        if deviceIds.count > 0 {
-            let n = NotificationPusher(apnsTopic: app.appID ?? "", expiration: .immediate, priority: .immediate)
+        if let appID = app.appID,
+            appID.length > 0,
+            iosTokens.count > 0 {
+            
+            let n = NotificationPusher(apnsTopic: appID, expiration: .relative(secondsToLive), priority: .immediate, collapseId: nil)
             
             let items:[APNSNotificationItem] = [
                 .alertBody(text),
                 .sound("default"),
-                .alertTitle(title)
+                .alertTitle(title),
+                .contentAvailable
             ]
             
             n.pushAPNS(
                 configurationName: app.appID ?? "",
-                deviceTokens: deviceIds,
+                deviceTokens: iosTokens,
                 notificationItems: items)
             {
                 responses in
                 
-                ApiResponse["ios_response"] = NotificationResponse.responsesToJson(responses: responses, deviceIDs: deviceIds)
+                ApiResponse["ios_response"] = NotificationResponse.responsesToJson(responses: responses, deviceIDs: iosTokens)
                 dispatchGroup.leave()
             }
         } else {
@@ -89,16 +106,19 @@ class ExternalAPI {
         //Pushing to GCM
         /////////////////
         
-        if registrationIDs.count > 0 {
+        if let androidApiKey = app.androidApiKey,
+            androidApiKey.length > 0,
+            androidRegIDs.count > 0 {
             
             let msg: [String:Any] = [
                 "message" 	: text,
                 "title"		: title
             ]
             
-            AndroidPushSender.send(androidApiKey: app.androidApiKey ?? "",
+            AndroidPushSender.send(androidApiKey: androidApiKey,
                                    message: msg,
-                                   to: registrationIDs) {
+                                   to: androidRegIDs,
+                                   timeToLive: secondsToLive) {
                                     androidResponse in
                                     
                                     ApiResponse["android_response"] = androidResponse
@@ -110,3 +130,12 @@ class ExternalAPI {
     }
     
 }
+
+
+
+
+
+
+
+
+
