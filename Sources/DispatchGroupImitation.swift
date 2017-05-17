@@ -6,7 +6,11 @@
 //
 //
 
+import PerfectThread
+
 class DispatchGroupImitation {
+    
+    private let lock = Threading.Lock()
     
     private var count: UInt = 0
     private var notify: ()->Void
@@ -16,16 +20,18 @@ class DispatchGroupImitation {
     }
     
     func enter() {
-        count += 1
+        lock.doWithLock {
+            count += 1
+        }
     }
     
     func leave() {
-        if count == 0 {
-            count = 0
-        } else {
-            count -= 1
-            if count == 0 {
-                notify()
+        lock.doWithLock {
+            if count > 0 {
+                count -= 1
+                if count == 0 {
+                    notify()
+                }
             }
         }
     }
