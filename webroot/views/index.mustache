@@ -13,9 +13,6 @@
         <td>Auth key (for external access): </td><td>{{ authKey }}</td>
       </tr>
       <tr>
-        <td>Mobile app  auth key (for external access): </td><td>{{ mobileAppAuthKey }}</td>
-      </tr>
-      <tr>
         <td>Application ID: </td><td> {{ appID }} </td>
       </tr>
       <tr>
@@ -46,11 +43,6 @@
           <form action="generate_notification" method="post" style='float:left;margin-left: 20px;'>
             <input name="id" type="hidden" value="{{id}}"/>
             <input type="submit" value="Test push notification" class="btn btn-primary">
-          </form>
-
-          <form action="get_statuses" method="post" style='float:left;margin-left: 20px;'>
-            <input name="id" type="hidden" value="{{id}}"/>
-            <input type="submit" value="Get notification status" class="btn btn-primary">
           </form>
 
           <form action="edit_application" method="post" style='float:left;margin-left: 20px;'>
