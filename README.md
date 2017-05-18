@@ -10,10 +10,12 @@ Then you can run it by
 
 $ .build/debug/SwiftPushServer
 
--- On OSx to Open in XCode
+-- On OSx to Open and Run in XCode
 
 Generate XCode project:
 
 $ swift package generate-xcodeproj
 
-And the run it from XCode
+change scheme to executable, then go to "edit sceme"->"options" and set custom working directory to your project dir
+
+And then run it from XCode

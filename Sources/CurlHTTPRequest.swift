@@ -29,7 +29,8 @@ public class CurlHTTPRequest {
         
             curlObject.close()
         
-            callback(String(bytes: body, encoding: .utf8) ?? "")
+            callback("Code: \(code)\n Header: \(String(bytes: header, encoding: .utf8) ?? "")\n Body: \(String(bytes: body, encoding: .utf8) ?? "")")
+            
         }
     }
 }
