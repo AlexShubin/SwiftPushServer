@@ -1,6 +1,9 @@
-RECOMMENDED INSTALLATION
 
--- Just to run on linux or mac
+# Push notification server. Sends pushes both on iOS and Android. Web interface and post-request API availible.
+
+# INSTALLATION
+
+## Just to run on linux or mac
 
 in project directory:
 
@@ -10,7 +13,7 @@ Then you can run it by
 
 $ .build/debug/SwiftPushServer
 
--- On OSx to Open and Run in XCode
+## On OSx to Open and Run in XCode
 
 Generate XCode project:
 
