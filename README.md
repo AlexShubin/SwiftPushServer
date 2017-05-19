@@ -1,7 +1,9 @@
 
-# Push notification server. Sends pushes both on iOS and Android. Web interface and post-request API availible.
+# Push notification server built with perfect server.
 
-# INSTALLATION
+Sends pushes both on iOS and Android. Web interface and post-request API availible.
+
+## Installation
 
 ## Just to run on linux or mac
 
