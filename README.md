@@ -1,6 +1,7 @@
 
 # Push notification server built with perfect server.
 
+<p align="center">
     <a href="https://developer.apple.com/swift/" target="_blank">
         <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
     </a>
@@ -19,6 +20,7 @@
     <a href="http://perfect.ly" target="_blank">
         <img src="http://perfect.ly/badge.svg" alt="Slack Status">
     </a>
+</p>
 
 Sends pushes both on iOS and Android. Web interface and post-request API availible.
 
