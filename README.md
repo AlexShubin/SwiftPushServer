@@ -1,5 +1,5 @@
 
-# Push notification server built with perfect server.
+# Push notification server built with perfect server
 
 <p>
         <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
