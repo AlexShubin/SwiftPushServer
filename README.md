@@ -2,9 +2,9 @@
 # Push notification server built with perfect server
 
 <p>
-        <img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0">
-        <img src="https://img.shields.io/badge/Platforms-OS%20X%20%7C%20Linux%20-lightgray.svg?style=flat" alt="Platforms OS X | Linux">
-    <img src="https://img.shields.io/packagist/l/doctrine/orm.svg">
+<img src="https://img.shields.io/badge/Swift-3.1-orange.svg">
+<img src="https://img.shields.io/badge/Platforms-OS%20X%20%7C%20Linux%20-lightgray.svg?style=flat">
+<img src="https://img.shields.io/packagist/l/doctrine/orm.svg">
 </p>
 
 Sends pushes both on iOS and Android. Web interface and post-request API availible.
