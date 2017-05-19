@@ -24,3 +24,14 @@ $ swift package generate-xcodeproj
 change scheme to executable, then go to "edit sceme"->"options" and set custom working directory to your project dir
 
 And then run it from XCode
+
+[![License](https://img.shields.io/cocoapods/l/Simplify.svg?style=flat)]
+[![Platform](https://img.shields.io/cocoapods/p/Simplify.svg?style=flat)]
+
+## Author
+
+Alex Shubin
+
+## License
+
+Simplify is available under the MIT license. See the LICENSE file for more info.
