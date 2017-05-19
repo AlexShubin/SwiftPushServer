@@ -3,7 +3,7 @@
 
 Sends pushes both on iOS and Android. Web interface and post-request API availible.
 
-## Installation
+# Installation
 
 ## Just to run on linux or mac
 
