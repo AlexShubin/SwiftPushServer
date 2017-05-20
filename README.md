@@ -37,4 +37,4 @@ Alex Shubin
 
 ## License
 
-Simplify is available under the MIT license. See the LICENSE file for more info.
+Swift push server is available under the MIT license.
