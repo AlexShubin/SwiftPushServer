@@ -21,6 +21,8 @@ Then you can run it by
 
 $ .build/debug/SwiftPushServer
 
+Then print `localhost:8090` in your browser
+
 ## On OSx to Open and Run in XCode
 
 Generate XCode project:
@@ -30,6 +32,8 @@ $ swift package generate-xcodeproj
 change scheme to executable, then go to "edit sceme"->"options" and set custom working directory to your project dir
 
 And then run it from XCode
+
+Then print `localhost:8090` in your browser
 
 ## Author
 
