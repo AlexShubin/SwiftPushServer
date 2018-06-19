@@ -112,7 +112,7 @@ public class ServerRoutes {
                         }
                         let thisFile = File(upload.tmpFileName)
                         do {
-                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().string + ".pem", overWrite: true)
+                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().uuidString + ".pem", overWrite: true)
                             app.pemPath = serverFile.realPath
                         } catch {
                             print(error)
@@ -125,7 +125,7 @@ public class ServerRoutes {
                         }
                         let thisFile = File(upload.tmpFileName)
                         do {
-                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().string + ".p8", overWrite: true)
+                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().uuidString + ".p8", overWrite: true)
                             app.p8Path = serverFile.realPath
                         } catch {
                             print(error)
