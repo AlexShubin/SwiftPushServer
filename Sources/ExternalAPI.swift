@@ -76,7 +76,7 @@ class ExternalAPI {
         /////////////////
         
         if let appID = app.appID,
-            appID.length > 0,
+            appID.count > 0,
             iosTokens.count > 0 {
             
             let n = NotificationPusher(apnsTopic: appID, expiration: .relative(secondsToLive), priority: .immediate, collapseId: nil)
@@ -107,7 +107,7 @@ class ExternalAPI {
         /////////////////
         
         if let androidApiKey = app.androidApiKey,
-            androidApiKey.length > 0,
+            androidApiKey.count > 0,
             androidRegIDs.count > 0 {
             
             let msg: [String:Any] = [

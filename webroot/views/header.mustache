@@ -7,16 +7,6 @@
   <body>
     <div class="container">
     <div class="header clearfix">
-      <nav>
-        <ul class="nav nav-pills pull-right">
-          {{^authenticated}}
-          <li role="presentation"><a href="/login">Log In</a></li>
-          {{/authenticated}}
-          {{#authenticated}}
-          <li role="presentation"><a href="javascript:;" onclick="var f=document.createElement('form');f.method='POST';f.action='/logout';f.submit();">Logout</a></li>
-          {{/authenticated}}
-        </ul>
-      </nav>
       <h3 class="text-muted"><a href="/">Swift push server dashboard</a></h3>
     </div>
     {{#flash}}

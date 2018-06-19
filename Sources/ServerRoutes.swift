@@ -11,7 +11,6 @@ import PerfectHTTP
 import PerfectNotifications
 import PerfectLib
 import PerfectHTTPServer
-import PerfectTurnstileSQLite
 
 public class ServerRoutes {
     
@@ -21,25 +20,6 @@ public class ServerRoutes {
         
         routes.add(method:.get, uri:"/", handler: main)
         routes.add(method:.get, uri:"/index", handler: indexHandler)
-        
-        // Auth //
-        routes.add(method: .get, uri: "/login", handler: AuthHandlersWeb.loginHandlerGET)
-        routes.add(method: .post, uri: "/login", handler: AuthHandlersWeb.loginHandlerPOST)
-        if allowRegistration {
-            routes.add(method: .get, uri: "/register", handler: AuthHandlersWeb.registerHandlerGET)
-            routes.add(method: .post, uri: "/register", handler: AuthHandlersWeb.registerHandlerPOST)
-        } else {
-            routes.add(method: .get, uri: "/register", handler: { request, response in
-                response.appendBody(string: "Registration is not allowed")
-                response.completed()
-            })
-            routes.add(method: .get, uri: "/register", handler: { request, response in
-                response.appendBody(string: "Registration is not allowed")
-                response.completed()
-            })
-        }
-        routes.add(method: .post, uri: "/logout", handler: AuthHandlersWeb.logoutHandler)
-        //
         
         // internal post //
         routes.add(method:.post, uri:"/send", handler:sendHandler)
@@ -57,26 +37,16 @@ public class ServerRoutes {
         return routes
     }
     
-    private static func getContext(_ request: HTTPRequest) -> [String: Any] {
-        return [
-            "accountID": request.user.authDetails?.account.uniqueID ?? "",
-            "authenticated": request.user.authenticated
-        ]
-    }
-    
     open static func main(request: HTTPRequest, _ response: HTTPResponse) {
         
-        if request.user.authenticated {
+        
             response.redirect(path: "/index")
-        } else {
-            response.redirect(path: "/login")
-        }
         
     }
     
     open static func indexHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
-        var context = getContext(request)
+        var context = [String: Any]()
         
         let apps = Database.shared.getAllApps()
         let mApps = Application.mustacheRepresentationFor(apps: apps)
@@ -89,11 +59,7 @@ public class ServerRoutes {
     
     
     open static func newApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
-        
-        let context = getContext(request)
-        
-        response.render(template: "/edit_application", context: context)
-        
+        response.render(template: "/edit_application")
     }
     
     open static func editApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
@@ -101,7 +67,7 @@ public class ServerRoutes {
         if let id = request.param(name: "id"),
             let app = Database.shared.getApplicationBy(id: id) {
         
-            var context = getContext(request)
+            var context = [String: Any]()
             context += app.mustacheRepresentation()
             context["pemBool"] = (app.authStyle == .pem)
             context["p8Bool"] = (app.authStyle == .p8)
@@ -196,7 +162,7 @@ public class ServerRoutes {
         
         if let id = request.param(name: "id") {
             
-            var context = getContext(request)
+            var context = [String: Any]()
             
             context["id"] = id
             
@@ -253,7 +219,7 @@ public class ServerRoutes {
         CurlHTTPRequest.post(url: "localhost:\(server.serverPort)/send_notification",
         header: header, body: body) { selfResponse in
 
-            var context = getContext(request)
+            var context = [String: Any]()
             context["response"] = selfResponse
     
             response.render(template: "/response", context: context)
