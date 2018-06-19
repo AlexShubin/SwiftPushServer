@@ -16,12 +16,11 @@
 		OBJ_1025 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Application.swift */; };
 		OBJ_1026 /* CurlHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CurlHTTPRequest.swift */; };
 		OBJ_1027 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Database.swift */; };
-		OBJ_1028 /* Dictionary+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Dictionary+Extentions.swift */; };
 		OBJ_1029 /* DispatchGroupImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DispatchGroupImitation.swift */; };
 		OBJ_1030 /* ExternalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* ExternalAPI.swift */; };
 		OBJ_1031 /* HTTPResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* HTTPResponse+.swift */; };
-		OBJ_1032 /* NotificationPusher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* NotificationPusher+Extensions.swift */; };
-		OBJ_1033 /* NotificationResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* NotificationResponse+Extensions.swift */; };
+		OBJ_1032 /* NotificationPusher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* NotificationPusher+.swift */; };
+		OBJ_1033 /* NotificationResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* NotificationResponse+.swift */; };
 		OBJ_1034 /* ServerRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* ServerRoutes.swift */; };
 		OBJ_1035 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* main.swift */; };
 		OBJ_1037 /* PerfectCURL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectCURL::PerfectCURL::Product" /* PerfectCURL.framework */; };
@@ -846,7 +845,6 @@
 		OBJ_117 /* inflate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
 		OBJ_118 /* inftrees.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
 		OBJ_119 /* trees.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
-		OBJ_12 /* Dictionary+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extentions.swift"; sourceTree = "<group>"; };
 		OBJ_120 /* uncompr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
 		OBJ_121 /* zutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		OBJ_123 /* czlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = czlib.h; sourceTree = "<group>"; };
@@ -883,7 +881,7 @@
 		OBJ_157 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		OBJ_158 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		OBJ_159 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		OBJ_16 /* NotificationPusher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationPusher+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_16 /* NotificationPusher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationPusher+.swift"; sourceTree = "<group>"; };
 		OBJ_160 /* OpenSSLInternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLInternal.swift; sourceTree = "<group>"; };
 		OBJ_161 /* PerfectCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectCrypto.swift; sourceTree = "<group>"; };
 		OBJ_162 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/shubin/Documents/XCodeProjects/SwiftPushServer/.build/checkouts/Perfect-Crypto.git--5196635702121641122/Package.swift"; sourceTree = "<group>"; };
@@ -892,7 +890,7 @@
 		OBJ_167 /* ameth_lib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ameth_lib.c; sourceTree = "<group>"; };
 		OBJ_168 /* asn1_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = asn1_.c; sourceTree = "<group>"; };
 		OBJ_169 /* asn_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = asn_.c; sourceTree = "<group>"; };
-		OBJ_17 /* NotificationResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationResponse+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_17 /* NotificationResponse+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationResponse+.swift"; sourceTree = "<group>"; };
 		OBJ_170 /* b_dump.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = b_dump.c; sourceTree = "<group>"; };
 		OBJ_171 /* b_print.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = b_print.c; sourceTree = "<group>"; };
 		OBJ_172 /* b_sock.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = b_sock.c; sourceTree = "<group>"; };
@@ -1953,7 +1951,7 @@
 			path = Expression;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1964,7 +1962,6 @@
 				OBJ_23 /* Dependencies */,
 				OBJ_418 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_67 /* PerfectMustache 3.0.2 */ = {
@@ -1993,12 +1990,11 @@
 				OBJ_9 /* Application.swift */,
 				OBJ_10 /* CurlHTTPRequest.swift */,
 				OBJ_11 /* Database.swift */,
-				OBJ_12 /* Dictionary+Extentions.swift */,
 				OBJ_13 /* DispatchGroupImitation.swift */,
 				OBJ_14 /* ExternalAPI.swift */,
 				OBJ_15 /* HTTPResponse+.swift */,
-				OBJ_16 /* NotificationPusher+Extensions.swift */,
-				OBJ_17 /* NotificationResponse+Extensions.swift */,
+				OBJ_16 /* NotificationPusher+.swift */,
+				OBJ_17 /* NotificationResponse+.swift */,
 				OBJ_18 /* ServerRoutes.swift */,
 				OBJ_19 /* main.swift */,
 			);
@@ -2596,7 +2592,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_418 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2669,12 +2665,11 @@
 				OBJ_1025 /* Application.swift in Sources */,
 				OBJ_1026 /* CurlHTTPRequest.swift in Sources */,
 				OBJ_1027 /* Database.swift in Sources */,
-				OBJ_1028 /* Dictionary+Extentions.swift in Sources */,
 				OBJ_1029 /* DispatchGroupImitation.swift in Sources */,
 				OBJ_1030 /* ExternalAPI.swift in Sources */,
 				OBJ_1031 /* HTTPResponse+.swift in Sources */,
-				OBJ_1032 /* NotificationPusher+Extensions.swift in Sources */,
-				OBJ_1033 /* NotificationResponse+Extensions.swift in Sources */,
+				OBJ_1032 /* NotificationPusher+.swift in Sources */,
+				OBJ_1033 /* NotificationResponse+.swift in Sources */,
 				OBJ_1034 /* ServerRoutes.swift in Sources */,
 				OBJ_1035 /* main.swift in Sources */,
 			);

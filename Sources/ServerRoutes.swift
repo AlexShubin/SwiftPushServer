@@ -12,10 +12,9 @@ import PerfectNotifications
 import PerfectLib
 import PerfectHTTPServer
 
-public class ServerRoutes {
+struct ServerRoutesProvider {
     
-    open static func makeRoutes() -> Routes {
-        
+    func make() -> Routes {
         var routes = Routes()
         
         routes.add(method:.get, uri:"/", handler: main)
@@ -33,19 +32,14 @@ public class ServerRoutes {
         // For external API
         routes.add(method:.post, uri:"/send_notification", handler:ExternalAPI.sendNotificationHandler)
         //
-        
         return routes
     }
     
-    open static func main(request: HTTPRequest, _ response: HTTPResponse) {
-        
-        
+    private func main(request: HTTPRequest, _ response: HTTPResponse) {
             response.redirect(path: "/index")
-        
     }
     
-    open static func indexHandler(request: HTTPRequest, _ response: HTTPResponse) {
-        
+    private func indexHandler(request: HTTPRequest, _ response: HTTPResponse) {
         var context = [String: Any]()
         
         let apps = Database.shared.getAllApps()
@@ -54,31 +48,26 @@ public class ServerRoutes {
         context["apps"] = mApps
         
         response.render(template: "/index", context: context)
-        
     }
     
     
-    open static func newApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    private func newApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         response.render(template: "/edit_application")
     }
     
-    open static func editApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
-        
-        if let id = request.param(name: "id"),
-            let app = Database.shared.getApplicationBy(id: id) {
-        
-            var context = [String: Any]()
-            context += app.mustacheRepresentation()
-            context["pemBool"] = (app.authStyle == .pem)
-            context["p8Bool"] = (app.authStyle == .p8)
-   
-            response.render(template: "/edit_application", context: context)
-            
+    private func editApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+        guard let id = request.param(name: "id"),
+            let app = Database.shared.getApplicationBy(id: id) else {
+                return
         }
+        var context = app.mustacheRepresentation()
+        context["pemBool"] = (app.authStyle == .pem)
+        context["p8Bool"] = (app.authStyle == .p8)
+        
+        response.render(template: "/edit_application", context: context)
     }
     
-    open static func saveApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
-        
+    private func saveApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         if let uploads = request.postFileUploads,
             uploads.count > 0 {
             
@@ -112,7 +101,8 @@ public class ServerRoutes {
                         }
                         let thisFile = File(upload.tmpFileName)
                         do {
-                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().uuidString + ".pem", overWrite: true)
+                            let path = fileDir.path + UUID().uuidString + ".pem"
+                            let serverFile = try thisFile.moveTo(path: path, overWrite: true)
                             app.pemPath = serverFile.realPath
                         } catch {
                             print(error)
@@ -125,7 +115,8 @@ public class ServerRoutes {
                         }
                         let thisFile = File(upload.tmpFileName)
                         do {
-                            let serverFile = try thisFile.moveTo(path: fileDir.path + UUID().uuidString + ".p8", overWrite: true)
+                            let path = fileDir.path + UUID().uuidString + ".p8"
+                            let serverFile = try thisFile.moveTo(path: path, overWrite: true)
                             app.p8Path = serverFile.realPath
                         } catch {
                             print(error)
@@ -155,11 +146,9 @@ public class ServerRoutes {
         }
         
         response.redirect(path: "/index")
-        
     }
     
-    static func generateNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
-        
+    private func generateNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         if let id = request.param(name: "id") {
             
             var context = [String: Any]()
@@ -171,7 +160,7 @@ public class ServerRoutes {
         
     }
     
-    static func deleteApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    private func deleteApplicationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         if let id = request.param(name: "id") {
             
@@ -181,7 +170,7 @@ public class ServerRoutes {
         }
     }
     
-    static func sendHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    private func sendHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         guard let text = request.param(name: "text"),
             let id = request.param(name: "id"),
@@ -225,5 +214,5 @@ public class ServerRoutes {
             response.render(template: "/response", context: context)
         }
     }
-    
 }
+

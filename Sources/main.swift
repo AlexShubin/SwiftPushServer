@@ -4,18 +4,12 @@ import PerfectHTTP
 import PerfectHTTPServer
 import PerfectNotifications
 
-//////////Constants//////////
-
-let allowRegistration = true
-
-/////////////////////////////
-
 Log.info(message: "SWIFT PUSH SERVER")
 
 // Create HTTP server.
 let server = HTTPServer()
 
-server.addRoutes(ServerRoutes.makeRoutes())
+server.addRoutes(ServerRoutesProvider().make())
 
 NotificationPusher.setupAPNSConfigurations()
 
