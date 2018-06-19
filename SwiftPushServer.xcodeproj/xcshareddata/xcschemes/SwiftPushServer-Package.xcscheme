@@ -14,79 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectCURL::PerfectCURL"
-               BuildableName = "PerfectCURL.framework"
-               BlueprintName = "PerfectCURL"
-               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectHTTP::PerfectHTTP"
-               BuildableName = "PerfectHTTP.framework"
-               BlueprintName = "PerfectHTTP"
-               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectNet::PerfectNet"
-               BuildableName = "PerfectNet.framework"
-               BlueprintName = "PerfectNet"
-               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "COpenSSL::COpenSSL"
-               BuildableName = "COpenSSL.framework"
-               BlueprintName = "COpenSSL"
-               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectThread::PerfectThread"
-               BuildableName = "PerfectThread.framework"
-               BlueprintName = "PerfectThread"
-               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectMustache::PerfectMustache"
-               BuildableName = "PerfectMustache.framework"
-               BlueprintName = "PerfectMustache"
+               BlueprintIdentifier = "PerfectCZlib::PerfectCZlib"
+               BuildableName = "PerfectCZlib.framework"
+               BlueprintName = "PerfectCZlib"
                ReferencedContainer = "container:SwiftPushServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -112,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectNotifications::PerfectNotifications"
-               BuildableName = "PerfectNotifications.framework"
-               BlueprintName = "PerfectNotifications"
+               BlueprintIdentifier = "PerfectHTTP::PerfectHTTP"
+               BuildableName = "PerfectHTTP.framework"
+               BlueprintName = "PerfectHTTP"
                ReferencedContainer = "container:SwiftPushServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -126,9 +56,51 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SQLite::SQLite"
-               BuildableName = "SQLite.framework"
-               BlueprintName = "SQLite"
+               BlueprintIdentifier = "PerfectThread::PerfectThread"
+               BuildableName = "PerfectThread.framework"
+               BlueprintName = "PerfectThread"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PerfectNet::PerfectNet"
+               BuildableName = "PerfectNet.framework"
+               BlueprintName = "PerfectNet"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PerfectCRUD::PerfectCRUD"
+               BuildableName = "PerfectCRUD.framework"
+               BlueprintName = "PerfectCRUD"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PerfectSQLite::PerfectSQLite"
+               BuildableName = "PerfectSQLite.framework"
+               BlueprintName = "PerfectSQLite"
                ReferencedContainer = "container:SwiftPushServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -154,9 +126,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "PerfectHTTPServer::PerfectCZlib"
-               BuildableName = "PerfectCZlib.framework"
-               BlueprintName = "PerfectCZlib"
+               BlueprintIdentifier = "COpenSSL::COpenSSL"
+               BuildableName = "COpenSSL.framework"
+               BlueprintName = "COpenSSL"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SwiftPushServer::SwiftPushServer"
+               BuildableName = "SwiftPushServer"
+               BlueprintName = "SwiftPushServer"
                ReferencedContainer = "container:SwiftPushServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -182,9 +168,37 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftPushServer::SwiftPushServer"
-               BuildableName = "SwiftPushServer"
-               BlueprintName = "SwiftPushServer"
+               BlueprintIdentifier = "PerfectCURL::PerfectCURL"
+               BuildableName = "PerfectCURL.framework"
+               BlueprintName = "PerfectCURL"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PerfectMustache::PerfectMustache"
+               BuildableName = "PerfectMustache.framework"
+               BlueprintName = "PerfectMustache"
+               ReferencedContainer = "container:SwiftPushServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PerfectNotifications::PerfectNotifications"
+               BuildableName = "PerfectNotifications.framework"
+               BlueprintName = "PerfectNotifications"
                ReferencedContainer = "container:SwiftPushServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -227,9 +241,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "PerfectCURL::PerfectCURL"
-            BuildableName = "PerfectCURL.framework"
-            BlueprintName = "PerfectCURL"
+            BlueprintIdentifier = "PerfectCZlib::PerfectCZlib"
+            BuildableName = "PerfectCZlib.framework"
+            BlueprintName = "PerfectCZlib"
             ReferencedContainer = "container:SwiftPushServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

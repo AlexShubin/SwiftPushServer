@@ -6,8 +6,17 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-COpenSSL.git",
         "state": {
           "branch": null,
-          "revision": "87b6d1f313887fa11bd75e157a3678f066eec981",
-          "version": "2.0.6"
+          "revision": "7cc9341d0751b3d7e77927ad8c4e668e1c4dc1d1",
+          "version": "3.1.4"
+        }
+      },
+      {
+        "package": "PerfectCRUD",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-CRUD.git",
+        "state": {
+          "branch": null,
+          "revision": "e79873e28ee9acf96fdf71b6784130a97a4b3f74",
+          "version": "1.0.4"
         }
       },
       {
@@ -15,8 +24,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Crypto.git",
         "state": {
           "branch": null,
-          "revision": "596cd8961ad1981d65eb07ea07cdda6345f6104a",
-          "version": "1.1.1"
+          "revision": "54e0f7c2a9d7355fca3c23e0f88096ac3765e08b",
+          "version": "3.1.2"
         }
       },
       {
@@ -24,8 +33,17 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-CURL.git",
         "state": {
           "branch": null,
-          "revision": "a9751dc2d1c24f497b80fb634c476ada99fcec14",
-          "version": "2.1.7"
+          "revision": "d81d96a74f43407a4b57a7c5335fd19515b50aeb",
+          "version": "3.0.6"
+        }
+      },
+      {
+        "package": "PerfectCZlib",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-CZlib-src.git",
+        "state": {
+          "branch": null,
+          "revision": "b63e46909aad937c6434766f8f8c6720d8f3bd05",
+          "version": "0.0.4"
         }
       },
       {
@@ -33,8 +51,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTP.git",
         "state": {
           "branch": null,
-          "revision": "eb93186d03409b81cfbc5dd65275f55a5df70cac",
-          "version": "2.2.4"
+          "revision": "1800d923271679170f9beef030566c7290a2d170",
+          "version": "3.0.12"
         }
       },
       {
@@ -42,8 +60,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTPServer.git",
         "state": {
           "branch": null,
-          "revision": "783de8b2ea06058fb4fd7df66e9a7d4a398b3648",
-          "version": "2.3.4"
+          "revision": "50bd6f46fc8663c5e430391f4e1ebb078f15d00f",
+          "version": "3.0.17"
         }
       },
       {
@@ -60,8 +78,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Mustache.git",
         "state": {
           "branch": null,
-          "revision": "e59824779e8a2ce21c37d66d78eb89053cbf5b54",
-          "version": "2.1.0"
+          "revision": "a3bce7e83fb6995cb2048c2dab75e7ce07773819",
+          "version": "3.0.2"
         }
       },
       {
@@ -69,8 +87,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Net.git",
         "state": {
           "branch": null,
-          "revision": "6134fa1630849344244304953ccf20b40c4fc145",
-          "version": "2.1.18"
+          "revision": "32cf5846ce212bf6aa2cb9d27a9b4f230355c1f9",
+          "version": "3.2.0"
         }
       },
       {
@@ -78,26 +96,26 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Notifications.git",
         "state": {
           "branch": null,
-          "revision": "563d2d35d2ce977ae8b3f4990c8246740dab9b8e",
-          "version": "2.1.4"
+          "revision": "6a60aefe81b7eb674880f7365b28e7e694c89429",
+          "version": "3.0.3"
         }
       },
       {
-        "package": "SQLite",
+        "package": "PerfectSQLite",
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-SQLite.git",
         "state": {
           "branch": null,
-          "revision": "d260604148db57929e7e1b9a2086f88d5d90905b",
-          "version": "2.0.2"
+          "revision": "36d57fa64a1f46aa2e4545a30d79dc5a5c2ef6ed",
+          "version": "3.1.1"
         }
       },
       {
-        "package": "SQLite3",
+        "package": "PerfectCSQLite3",
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-sqlite3-support.git",
         "state": {
           "branch": null,
-          "revision": "4161e94eb90fdc10653ee597ef1b28138577e025",
-          "version": "2.0.1"
+          "revision": "fb806c0fd0fcbf27ababa9c03a00e32c2c46464c",
+          "version": "3.0.0"
         }
       },
       {
@@ -105,8 +123,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Thread.git",
         "state": {
           "branch": null,
-          "revision": "7d09e1830dd8e46b99c34a754a0bf4c2d567794e",
-          "version": "2.0.12"
+          "revision": "d783048201086dc2cdc08627041e5001157db7f3",
+          "version": "3.0.4"
         }
       },
       {
@@ -114,8 +132,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/PerfectLib.git",
         "state": {
           "branch": null,
-          "revision": "e85a9ead840f80dfd85ca90627cf88cfb6e0cb59",
-          "version": "2.0.11"
+          "revision": "cdc17d544ec8e87da5f3b24cdbda8d02d77bb943",
+          "version": "3.1.1"
         }
       }
     ]
