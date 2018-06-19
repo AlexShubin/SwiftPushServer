@@ -12,27 +12,19 @@ import PerfectNotifications
 import PerfectLib
 import PerfectHTTPServer
 
-struct ServerRoutesProvider {
+struct UIRoutesProvider {
     
-    func make() -> Routes {
-        var routes = Routes()
-        
-        routes.add(method:.get, uri:"/", handler: main)
-        routes.add(method:.get, uri:"/index", handler: indexHandler)
-        
-        // internal post //
-        routes.add(method:.post, uri:"/send", handler:sendHandler)
-        routes.add(method:.post, uri:"/generate_notification", handler:generateNotificationHandler)
-        routes.add(method:.post, uri:"/new_application", handler:newApplicationHandler)
-        routes.add(method:.post, uri:"/edit_application", handler:editApplicationHandler)
-        routes.add(method:.post, uri:"/save_application", handler:saveApplicationHandler)
-        routes.add(method:.post, uri:"/delete_application", handler:deleteApplicationHandler)
-        //
-        
-        // For external API
-        routes.add(method:.post, uri:"/send_notification", handler:ExternalAPI.sendNotificationHandler)
-        //
-        return routes
+    func make() -> [Route] {
+        return [
+            Route(method: .get, uri: "/", handler: main),
+            Route(method:.get, uri:"/index", handler: indexHandler),
+            Route(method:.post, uri:"/send", handler:sendHandler),
+            Route(method:.post, uri:"/generate_notification", handler:generateNotificationHandler),
+            Route(method:.post, uri:"/new_application", handler:newApplicationHandler),
+            Route(method:.post, uri:"/edit_application", handler:editApplicationHandler),
+            Route(method:.post, uri:"/save_application", handler:saveApplicationHandler),
+            Route(method:.post, uri:"/delete_application", handler:deleteApplicationHandler)
+        ]
     }
     
     private func main(request: HTTPRequest, _ response: HTTPResponse) {
@@ -43,7 +35,7 @@ struct ServerRoutesProvider {
         var context = [String: Any]()
         
         let apps = Database.shared.getAllApps()
-        let mApps = Application.mustacheRepresentationFor(apps: apps)
+        let mApps = apps.map { $0.mustacheRepresentation }
         
         context["apps"] = mApps
         
@@ -60,7 +52,7 @@ struct ServerRoutesProvider {
             let app = Database.shared.getApplicationBy(id: id) else {
                 return
         }
-        var context = app.mustacheRepresentation()
+        var context = app.mustacheRepresentation
         context["pemBool"] = (app.authStyle == .pem)
         context["p8Bool"] = (app.authStyle == .p8)
         

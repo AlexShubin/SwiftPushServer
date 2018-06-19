@@ -10,6 +10,11 @@ import Foundation
 
 class Application {
     
+    enum AuthStyle:String {
+        case p8 = "p8"
+        case pem = "pem"
+    }
+    
     var id: Int
     var authKey: String
     var production: Bool
@@ -21,38 +26,24 @@ class Application {
     var p8Path: String?
     var androidApiKey: String?
     
-    enum AuthStyle:String {
-        case p8 = "p8"
-        case pem = "pem"
-    }
-    
     init() {
         self.id = Database.shared.getMaxAppID() + 1
         self.authKey = UUID().uuidString
         self.production = false
     }
     
-    func mustacheRepresentation() -> [String: Any] {
-        
+    var mustacheRepresentation: [String: Any] {
         return [
-            "id":id,
-            "authKey":authKey,
-            "appID":appID ?? "",
-            "pemPath":pemPath ?? "",
-            "keyID":keyID ?? "",
-            "teamID":teamID ?? "",
-            "authStyle":authStyle?.rawValue ?? "",
-            "p8Path":p8Path ?? "",
-            "androidApiKey":androidApiKey ?? "",
+            "id": id,
+            "authKey": authKey,
+            "appID": appID ?? "",
+            "pemPath": pemPath ?? "",
+            "keyID": keyID ?? "",
+            "teamID": teamID ?? "",
+            "authStyle": authStyle?.rawValue ?? "",
+            "p8Path": p8Path ?? "",
+            "androidApiKey": androidApiKey ?? "",
             "production": production
         ]
-        
     }
-    
-    static func mustacheRepresentationFor(apps: [Application]) -> [[String: Any]] {
-        
-        return apps.map { $0.mustacheRepresentation() }
-        
-    }
-    
 }

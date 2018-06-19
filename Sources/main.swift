@@ -8,8 +8,7 @@ Log.info(message: "SWIFT PUSH SERVER")
 
 // Create HTTP server.
 let server = HTTPServer()
-
-server.addRoutes(ServerRoutesProvider().make())
+server.addRoutes(Routes(UIRoutesProvider().make() + APIRoutesProvider().make()))
 
 NotificationPusher.setupAPNSConfigurations()
 

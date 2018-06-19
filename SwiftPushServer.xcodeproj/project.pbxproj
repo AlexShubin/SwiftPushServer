@@ -21,7 +21,7 @@
 		OBJ_1031 /* HTTPResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* HTTPResponse+.swift */; };
 		OBJ_1032 /* NotificationPusher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* NotificationPusher+.swift */; };
 		OBJ_1033 /* NotificationResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* NotificationResponse+.swift */; };
-		OBJ_1034 /* ServerRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* ServerRoutes.swift */; };
+		OBJ_1034 /* UIRoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* UIRoutesProvider.swift */; };
 		OBJ_1035 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* main.swift */; };
 		OBJ_1037 /* PerfectCURL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectCURL::PerfectCURL::Product" /* PerfectCURL.framework */; };
 		OBJ_1038 /* PerfectSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "PerfectSQLite::PerfectSQLite::Product" /* PerfectSQLite.framework */; };
@@ -901,7 +901,7 @@
 		OBJ_177 /* buf_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = buf_.c; sourceTree = "<group>"; };
 		OBJ_178 /* buffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
 		OBJ_179 /* by_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = by_.c; sourceTree = "<group>"; };
-		OBJ_18 /* ServerRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRoutes.swift; sourceTree = "<group>"; };
+		OBJ_18 /* UIRoutesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRoutesProvider.swift; sourceTree = "<group>"; };
 		OBJ_180 /* c_.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = c_.c; sourceTree = "<group>"; };
 		OBJ_181 /* camellia.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = camellia.c; sourceTree = "<group>"; };
 		OBJ_182 /* cbc128.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cbc128.c; sourceTree = "<group>"; };
@@ -1991,11 +1991,11 @@
 				OBJ_10 /* CurlHTTPRequest.swift */,
 				OBJ_11 /* Database.swift */,
 				OBJ_13 /* DispatchGroupImitation.swift */,
-				OBJ_14 /* ExternalAPI.swift */,
 				OBJ_15 /* HTTPResponse+.swift */,
 				OBJ_16 /* NotificationPusher+.swift */,
 				OBJ_17 /* NotificationResponse+.swift */,
-				OBJ_18 /* ServerRoutes.swift */,
+				OBJ_14 /* ExternalAPI.swift */,
+				OBJ_18 /* UIRoutesProvider.swift */,
 				OBJ_19 /* main.swift */,
 			);
 			path = Sources;
@@ -2670,7 +2670,7 @@
 				OBJ_1031 /* HTTPResponse+.swift in Sources */,
 				OBJ_1032 /* NotificationPusher+.swift in Sources */,
 				OBJ_1033 /* NotificationResponse+.swift in Sources */,
-				OBJ_1034 /* ServerRoutes.swift in Sources */,
+				OBJ_1034 /* UIRoutesProvider.swift in Sources */,
 				OBJ_1035 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

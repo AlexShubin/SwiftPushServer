@@ -9,31 +9,19 @@
 import SQLite
 import PerfectLib
 
-extension SQLiteStmt {
-    func columnBool(position: Int) -> Bool {
-        return columnInt(position: position) == 0 ? false : true
-    }
-}
-
 class Database {
     
     static let shared = Database()
     
-    static let dbPath = "./db/database"
+    let db: SQLite
     
-    var db: SQLite
-    
-    //MARK: - INIT
-
-    private init() {
-        
+    init() {
         do {
-            db = try SQLite(Database.dbPath)
+            db = try SQLite("./db/database")
             try buildTables()
         } catch {
             fatalError("\(error)")
         }
-        
     }
     
     deinit {
@@ -41,19 +29,14 @@ class Database {
     }
     
     private func buildTables() throws {
-        
         try db.execute(statement: "CREATE TABLE IF NOT EXISTS applications (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, auth_key TEXT NOT NULL, app_id TEXT, auth_style TEXT, pem_path TEXT, key_id TEXT, team_id TEXT, p8_path TEXT, android_api_key TEXT, production INTEGER NOT NULL)")
-        
     }
     
     //MARK: - public API
     
     func getAllApps() -> [Application] {
-        
         var result = [Application]()
-        
         let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key, production FROM applications"
-        
         do {
             
             try db.forEachRow(statement: query) {(statement: SQLiteStmt, i:Int) -> () in
@@ -74,20 +57,14 @@ class Database {
             }} catch {
                 fatalError("\(error)")
         }
-        
         return result
     }
     
     func getApplicationBy(id: String) -> Application? {
-        
         let query = "SELECT id, auth_key, app_id, auth_style, pem_path, key_id, team_id, p8_path, android_api_key, production FROM applications WHERE id = '\(id)' LIMIT 1"
-        
         var app: Application?
-        
         do {
-            
             try db.forEachRow(statement: query) {(statement: SQLiteStmt, i:Int) -> () in
-                
                 app = Application()
                 app!.id = statement.columnInt(position: 0)
                 app!.authKey = statement.columnText(position: 1)
@@ -99,20 +76,15 @@ class Database {
                 app!.p8Path = statement.columnText(position: 7)
                 app!.androidApiKey = statement.columnText(position: 8)
                 app!.production = (statement.columnInt(position: 9) != 0)
-                
-                }
-            
+            }
         } catch {
-                fatalError("\(error)")
+            fatalError("\(error)")
         }
-        
         return app
     }
     
     func insertOrReplace(application: Application) {
-        
         do {
-            
             var query = "INSERT OR REPLACE INTO applications VALUES ("
             
             query.append("\(application.id),")
@@ -131,54 +103,37 @@ class Database {
             query = query.replacingOccurrences(of: "'null'", with: "null")
             
             try db.execute(statement: query)
-            
         } catch {
             fatalError("\(error)")
         }
-        
     }
     
     func deleteApplicationBy(id: String) {
-        
-        //first deleting associated files
+        // first delete associated files
         if let app = getApplicationBy(id: id) {
-            
-            do {
-                let file = File(app.pemPath ?? "")
-                if file.exists { file.delete() }
+            let file = File(app.pemPath ?? "")
+            if file.exists {
+                file.delete()
             }
-            
         }
-        //
-        
+        // then delete the app
         do {
-            
             try db.execute(statement: "DELETE FROM applications WHERE id = '\(id)'")
-            
         } catch {
             fatalError("\(error)")
         }
-        
     }
     
     func getMaxAppID() -> Int {
-        
         let query = "SELECT max(id) FROM applications"
-        
         var id = 0
-        
         do {
-            
-            try db.forEachRow(statement: query) {(statement: SQLiteStmt, i:Int) -> () in
-                
+            try db.forEachRow(statement: query) { (statement: SQLiteStmt, i: Int) -> () in
                 id = statement.columnInt(position: 0)
-                
             }
-            
         } catch {
             fatalError("\(error)")
         }
-        
         return id
     }
     

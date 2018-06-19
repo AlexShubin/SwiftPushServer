@@ -11,9 +11,15 @@ import PerfectNotifications
 import PerfectLib
 import PerfectHTTPServer
 
-class ExternalAPI {
+struct APIRoutesProvider {
     
-    static func sendNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
+    func make() -> [Route] {
+        return [
+            Route(method: .post, uri: "/send_notification", handler: sendNotificationHandler)
+        ]
+    }
+    
+    private func sendNotificationHandler(request: HTTPRequest, _ response: HTTPResponse) {
         
         let params = request.params()
         
