@@ -17,7 +17,7 @@
 		OBJ_1026 /* CurlHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CurlHTTPRequest.swift */; };
 		OBJ_1027 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Database.swift */; };
 		OBJ_1029 /* DispatchGroupImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DispatchGroupImitation.swift */; };
-		OBJ_1030 /* ExternalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* ExternalAPI.swift */; };
+		OBJ_1030 /* APIRoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* APIRoutesProvider.swift */; };
 		OBJ_1031 /* HTTPResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* HTTPResponse+.swift */; };
 		OBJ_1032 /* NotificationPusher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* NotificationPusher+.swift */; };
 		OBJ_1033 /* NotificationResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* NotificationResponse+.swift */; };
@@ -863,7 +863,7 @@
 		OBJ_137 /* MimeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeReader.swift; sourceTree = "<group>"; };
 		OBJ_138 /* MimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
 		OBJ_139 /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
-		OBJ_14 /* ExternalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAPI.swift; sourceTree = "<group>"; };
+		OBJ_14 /* APIRoutesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutesProvider.swift; sourceTree = "<group>"; };
 		OBJ_140 /* StaticFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticFileHandler.swift; sourceTree = "<group>"; };
 		OBJ_141 /* TypedRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedRoutes.swift; sourceTree = "<group>"; };
 		OBJ_142 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/shubin/Documents/XCodeProjects/SwiftPushServer/.build/checkouts/Perfect-HTTP.git--6392294032632002019/Package.swift"; sourceTree = "<group>"; };
@@ -1994,7 +1994,7 @@
 				OBJ_15 /* HTTPResponse+.swift */,
 				OBJ_16 /* NotificationPusher+.swift */,
 				OBJ_17 /* NotificationResponse+.swift */,
-				OBJ_14 /* ExternalAPI.swift */,
+				OBJ_14 /* APIRoutesProvider.swift */,
 				OBJ_18 /* UIRoutesProvider.swift */,
 				OBJ_19 /* main.swift */,
 			);
@@ -2666,7 +2666,7 @@
 				OBJ_1026 /* CurlHTTPRequest.swift in Sources */,
 				OBJ_1027 /* Database.swift in Sources */,
 				OBJ_1029 /* DispatchGroupImitation.swift in Sources */,
-				OBJ_1030 /* ExternalAPI.swift in Sources */,
+				OBJ_1030 /* APIRoutesProvider.swift in Sources */,
 				OBJ_1031 /* HTTPResponse+.swift in Sources */,
 				OBJ_1032 /* NotificationPusher+.swift in Sources */,
 				OBJ_1033 /* NotificationResponse+.swift in Sources */,
