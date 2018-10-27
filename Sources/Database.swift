@@ -6,7 +6,7 @@
 //
 //
 
-import SQLite
+import PerfectSQLite
 import PerfectLib
 
 class Database {
@@ -20,7 +20,7 @@ class Database {
             db = try SQLite("./db/database")
             try buildTables()
         } catch {
-            fatalError("\(error)")
+            fatalError("\(error). If you're running from XCode debugger, please set custom working dir in scheme settings")
         }
     }
     
