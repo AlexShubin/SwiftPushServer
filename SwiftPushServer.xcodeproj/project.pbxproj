@@ -15,7 +15,7 @@
 		OBJ_1025 /* APIRoutesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* APIRoutesProvider.swift */; };
 		OBJ_1026 /* AndroidPushSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AndroidPushSender.swift */; };
 		OBJ_1027 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Application.swift */; };
-		OBJ_1028 /* CurlHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CurlHTTPRequest.swift */; };
+		OBJ_1028 /* HTTPRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* HTTPRequestManager.swift */; };
 		OBJ_1029 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Database.swift */; };
 		OBJ_1030 /* DispatchGroupImitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DispatchGroupImitation.swift */; };
 		OBJ_1031 /* HTTPResponse+.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* HTTPResponse+.swift */; };
@@ -834,7 +834,7 @@
 		OBJ_107 /* adler32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
 		OBJ_108 /* compress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
 		OBJ_109 /* crc32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
-		OBJ_11 /* CurlHTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlHTTPRequest.swift; sourceTree = "<group>"; };
+		OBJ_11 /* HTTPRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestManager.swift; sourceTree = "<group>"; };
 		OBJ_110 /* deflate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
 		OBJ_111 /* gzclose.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
 		OBJ_112 /* gzlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
@@ -1960,7 +1960,7 @@
 			path = Expression;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1972,7 +1972,6 @@
 				OBJ_23 /* Dependencies */,
 				OBJ_419 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_67 /* PerfectMustache 3.0.2 */ = {
@@ -2000,7 +1999,7 @@
 				OBJ_8 /* APIRoutesProvider.swift */,
 				OBJ_9 /* AndroidPushSender.swift */,
 				OBJ_10 /* Application.swift */,
-				OBJ_11 /* CurlHTTPRequest.swift */,
+				OBJ_11 /* HTTPRequestManager.swift */,
 				OBJ_12 /* Database.swift */,
 				OBJ_13 /* DispatchGroupImitation.swift */,
 				OBJ_14 /* HTTPResponse+.swift */,
@@ -2603,7 +2602,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_419 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2675,7 +2674,7 @@
 				OBJ_1025 /* APIRoutesProvider.swift in Sources */,
 				OBJ_1026 /* AndroidPushSender.swift in Sources */,
 				OBJ_1027 /* Application.swift in Sources */,
-				OBJ_1028 /* CurlHTTPRequest.swift in Sources */,
+				OBJ_1028 /* HTTPRequestManager.swift in Sources */,
 				OBJ_1029 /* Database.swift in Sources */,
 				OBJ_1030 /* DispatchGroupImitation.swift in Sources */,
 				OBJ_1031 /* HTTPResponse+.swift in Sources */,

@@ -13,7 +13,13 @@ import PerfectLib
 import PerfectHTTPServer
 
 struct UIRoutesProvider {
-    
+
+    private let _httpRequestManager: HTTPRequestManager
+
+    init(httpRequestManager: HTTPRequestManager) {
+        _httpRequestManager = httpRequestManager
+    }
+
     func make() -> [Route] {
         return [
             Route(method: .get, uri: "/", handler: main),
@@ -197,7 +203,7 @@ struct UIRoutesProvider {
         print(body)
         print("==================================")
         
-        CurlHTTPRequest.post(url: "localhost:\(server.serverPort)/send_notification",
+        _httpRequestManager.post(url: "localhost:\(server.serverPort)/send_notification",
         header: header, body: body) { selfResponse in
 
             var context = [String: Any]()
