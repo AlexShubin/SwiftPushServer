@@ -12,7 +12,13 @@ import PerfectLib
 import PerfectHTTPServer
 
 struct APIRoutesProvider {
-    
+
+    private let _androidPushSender: AndroidPushSender
+
+    init(androidPushSender: AndroidPushSender) {
+        _androidPushSender = androidPushSender
+    }
+
     func make() -> [Route] {
         return [
             Route(method: .post, uri: "/send_notification", handler: sendNotificationHandler)
@@ -115,33 +121,18 @@ struct APIRoutesProvider {
         if let androidApiKey = app.androidApiKey,
             androidApiKey.count > 0,
             androidRegIDs.count > 0 {
-            
-            let msg: [String:Any] = [
-                "message" 	: text,
-                "title"		: title
-            ]
-            
-            AndroidPushSender.send(androidApiKey: androidApiKey,
-                                   message: msg,
-                                   to: androidRegIDs,
-                                   timeToLive: secondsToLive) {
-                                    androidResponse in
-                                    
-                                    ApiResponse["android_response"] = androidResponse
-                                    dispatchGroup.leave()
+            let msg: [String:Any] = ["message" : text,
+                                     "title"   : title]
+            _androidPushSender.send(androidApiKey: androidApiKey,
+                                    message: msg,
+                                    to: androidRegIDs,
+                                    timeToLive: secondsToLive) {
+                                        ApiResponse["android_response"] = $0
+                                        dispatchGroup.leave()
             }
         } else {
             dispatchGroup.leave()
         }
     }
-    
 }
-
-
-
-
-
-
-
-
 

@@ -4,16 +4,26 @@
 //
 //  Created by Alex Shubin on 20.03.17.
 //
-//
 
 import cURL
 import PerfectCURL
-import Foundation
 
-class AndroidPushSender {
+protocol AndroidPushSender {
+    func send(androidApiKey: String,
+              message: [String:Any],
+              to registrationIDs: [String],
+              timeToLive: Int,
+              callback: @escaping ([String: Any]) -> Void)
+}
+
+struct DefaultAndroidPushSender: AndroidPushSender {
     
-    public static func send(androidApiKey:String, message:[String:Any], to registrationIDs:[String], timeToLive:Int, callback: @escaping ([String:Any])->Void) {
-        
+    func send(androidApiKey: String,
+              message: [String:Any],
+              to registrationIDs: [String],
+              timeToLive: Int,
+              callback: @escaping ([String: Any]) -> Void) {
+
         let fields: [String:Any] = [
             "registration_ids" : registrationIDs,
             "time_to_live": timeToLive,
@@ -47,19 +57,14 @@ class AndroidPushSender {
                 var respJson = try? respStr.jsonDecode() as? [String:Any] {
                 
                 if var results = respJson?["results"] as? [[String:Any]] {
-                    
                     for i in 0..<results.count {
                         results[i]["registration_id"] = registrationIDs[i]
                     }
-                    
                     respJson?["results"] = results
                 }
-                
                 result["body"] = respJson
             }
-            
             callback(result)
         }
     }
-    
 }
