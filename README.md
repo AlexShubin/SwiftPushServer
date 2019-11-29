@@ -2,7 +2,7 @@
 # Push notification server built with perfect server
 
 <p>
-<img src="https://img.shields.io/badge/Swift-4.2-orange.svg">
+<img src="https://img.shields.io/badge/Swift-5-orange.svg">
 <img src="https://img.shields.io/badge/Platforms-OS%20X%20%7C%20Linux%20-lightgray.svg?style=flat">
 <img src="https://img.shields.io/packagist/l/doctrine/orm.svg">
 </p>
