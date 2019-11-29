@@ -25,15 +25,13 @@ Then print `localhost:8090` in your browser
 
 ## On OSx to Open and Run in XCode
 
-Generate XCode project:
+- open `Package.swift`
 
-$ swift package generate-xcodeproj
+- go to "edit sceme"->"options" and set custom working directory to your project dir
 
-change scheme to executable, then go to "edit sceme"->"options" and set custom working directory to your project dir
+- run it from XCode
 
-And then run it from XCode
-
-Then print `localhost:8090` in your browser
+- print `localhost:8090` in your browser
 
 ## Author
 
