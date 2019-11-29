@@ -13,15 +13,13 @@ Sends pushes both on iOS and Android. Web interface and post-request API availib
 
 ## Just to run on linux or mac
 
-in project directory:
+In project directory:
 
-$ swift build
+- build: `$ swift build`
 
-Then you can run it by 
+- run: `$ .build/debug/SwiftPushServer`
 
-$ .build/debug/SwiftPushServer
-
-Then print `localhost:8090` in your browser
+- print `localhost:8090` in your browser
 
 ## On OSx to Open and Run in XCode
 
