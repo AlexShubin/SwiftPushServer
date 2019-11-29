@@ -31,9 +31,9 @@ struct APIRoutesProvider {
         
         guard params.count > 0,
             let inputJSON = try? params[0].0.jsonDecode() as? [String:Any],
-            let id = inputJSON?["app_id"] as? String,
-            let text = inputJSON?["message"] as? String,
-            let title = inputJSON?["title"] as? String else {
+            let id = inputJSON["app_id"] as? String,
+            let text = inputJSON["message"] as? String,
+            let title = inputJSON["title"] as? String else {
                 
                 response.appendBody(string: "Invalid data passed: app_id, message, title - should be there")
                 response.completed()
@@ -43,10 +43,10 @@ struct APIRoutesProvider {
         var iosTokens = [String]()
         var androidRegIDs = [String]()
         
-        if let tokens = inputJSON?["ios_tokens"] as? [String] {
+        if let tokens = inputJSON["ios_tokens"] as? [String] {
             iosTokens = tokens
         }
-        if let regIDs = inputJSON?["android_reg_ids"] as? [String] {
+        if let regIDs = inputJSON["android_reg_ids"] as? [String] {
             androidRegIDs = regIDs
         }
         
@@ -69,7 +69,7 @@ struct APIRoutesProvider {
         }
         
         var secondsToLive = 60*60*24*7*4 // 4 weeks by default
-        if let timeToLive = inputJSON?["time_to_live"] as? Int,
+        if let timeToLive = inputJSON["time_to_live"] as? Int,
             1..<secondsToLive ~= timeToLive {
             secondsToLive = timeToLive
         }

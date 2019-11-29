@@ -56,11 +56,11 @@ struct DefaultAndroidPushSender: AndroidPushSender {
             if let respStr = String(bytes: body, encoding: .utf8),
                 var respJson = try? respStr.jsonDecode() as? [String:Any] {
                 
-                if var results = respJson?["results"] as? [[String:Any]] {
+                if var results = respJson["results"] as? [[String:Any]] {
                     for i in 0..<results.count {
                         results[i]["registration_id"] = registrationIDs[i]
                     }
-                    respJson?["results"] = results
+                    respJson["results"] = results
                 }
                 result["body"] = respJson
             }
