@@ -128,7 +128,7 @@ class Database {
         let query = "SELECT max(id) FROM applications"
         var id = 0
         do {
-            try db.forEachRow(statement: query) { (statement: SQLiteStmt, i: Int) -> () in
+            try db.forEachRow(statement: query) { (statement, i) in
                 id = statement.columnInt(position: 0)
             }
         } catch {
